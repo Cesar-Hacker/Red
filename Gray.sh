@@ -13,8 +13,20 @@ printf "$R"
 printf "$Y              Cesar Hacker The Gray"
 echo
 printf "$G instalando requisitos"
+mv $HOME/peyload $HOME/Red
 pkg update && pkg upgrade -y
 pkg install openssh -y
+pkg install git
+cd $HOME
+ls
+git clone https://github.com/Cesar-Hacker/Ngrok-Framework
+cd Ngrok-Framework
+ls
+chmod 777 $HOME/Ngrok-Framework/ngrok
+chmod 777 $HOME/Ngrok-Framework/install.sh
+bash $HOME/Ngrok-Framework/install.sh
+cd $HOME/Red
+ls
 printf "$G instalando herramientas"
 apt install openssh
 mkdir -p $HOME/Red/Cesar
